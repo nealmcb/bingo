@@ -131,16 +131,14 @@ class Page:
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-t', '--font-type',
-		help='TrueType font file to use',
-		required=True)
+	parser.add_argument('-t', '--font-type', default="times.ttf",
+		            help='TrueType font file to use. Default=%(default)s')
 	parser.add_argument('-s', '--font-size',
-		help='Font size (default=%(default)s)',
-		default=10,
+		help='Font size. Default=%(default)s',
+		default=15,
 		type=int)
-	parser.add_argument('-o', '--output',
-		help='Name of output pdf file (will overwrite without asking)',
-		required=True)
+	parser.add_argument('-o', '--output', default="card0.pdf",
+		help='Name of output pdf file (will overwrite without asking). Default=%(default)s')
 	args = parser.parse_args()
 	if args.font_type:
 		pdfmetrics.registerFont(TTFont(
